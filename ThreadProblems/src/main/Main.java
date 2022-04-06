@@ -14,6 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 		//Uncomment for easy testing
 		//test();
+		//test comment for git
 		startFromCommandLine(args);
 		long startTime = System.currentTimeMillis();
 		threadProblem.start(sharedLocationMethod);
