@@ -15,10 +15,6 @@ public class LockingMethod extends SharedLocationMethod {
 
 	@Override
 	public void sharedLocationMethod(int threadId, HashMap<String, Object> data) {
-		lockingMethod(threadId,data);
-	}
-	
-	private void lockingMethod(int threadId, HashMap<String, Object> data) {
     	try {
     		lock.lock();
     		threadProblem.sharedLocationMethod(threadId,data);
@@ -26,5 +22,4 @@ public class LockingMethod extends SharedLocationMethod {
     		lock.unlock();
     	}
 	}
-
 }

@@ -14,7 +14,6 @@ public class Main {
 	public static void main(String[] args) {
 		//Uncomment for easy testing
 		//test();
-		//test comment for git
 		startFromCommandLine(args);
 		long startTime = System.currentTimeMillis();
 		threadProblem.start(sharedLocationMethod);
@@ -131,7 +130,7 @@ public class Main {
 	private static void test() {
 		SharedCounter threadProblem = new SharedCounter();
 		
-		String blockMethod = "LockingMethod";
+		String blockMethod = "SemaphoreMethod";
 		System.out.println("Test will run with a Block Method.\nDo you want None???? [Y/n]");
 		Scanner keyboard = new Scanner(System.in);
 		String confirm = keyboard.next();

@@ -8,8 +8,9 @@ public abstract class SharedLocationMethod {
 	private static final String LockingMethod = "LockingMethod";
 	private static final String SynchronizeMethod = "SynchronizeMethod";
 	private static final String None = "None";
+	private static final String SemaphoreMethod = "SemaphoreMethod";
 	private static final String[] BlockingMethods = {
-			LockingMethod, SynchronizeMethod, None
+			LockingMethod, SynchronizeMethod, None, SemaphoreMethod
 	};
 	public static final String DEFAULT = LockingMethod;
 	
@@ -33,6 +34,9 @@ public abstract class SharedLocationMethod {
 				break;
 			case None:
 				method =  new None(threadProblem);
+				break;
+			case SemaphoreMethod:
+				method =  new SemaphoreMethod(threadProblem);
 				break;
 			default:
 				correct = false;
