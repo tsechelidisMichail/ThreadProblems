@@ -16,7 +16,7 @@ public abstract class SharedLocationMethod {
 	
 	protected ThreadProblem threadProblem;
 	
-	public abstract void sharedLocationMethod(int threadId, HashMap<String, Object> data);
+	public abstract void reduce(int threadId, HashMap<String, Object> data);
 	
 	public SharedLocationMethod(ThreadProblem threadProblem) {
 		this.threadProblem = threadProblem;

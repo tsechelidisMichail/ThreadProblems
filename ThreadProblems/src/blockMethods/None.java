@@ -11,7 +11,7 @@ public class None extends SharedLocationMethod{
 	}
 
 	@Override
-	public void sharedLocationMethod(int threadId, HashMap<String, Object> data) {
-		this.threadProblem.sharedLocationMethod(threadId, data);
+	public void reduce(int threadId, HashMap<String, Object> data) {
+		this.threadProblem.reduce(threadId, data);
 	}
 }

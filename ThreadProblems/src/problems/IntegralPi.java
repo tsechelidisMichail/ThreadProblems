@@ -17,19 +17,6 @@ public class IntegralPi extends ThreadProblem{
 		long start = threadId*stepsPerThread;
 		long finish = start + stepsPerThread;
 		
-		data.put("start",start);
-		data.put("finish",finish);
-		
-		return data;
-	}
-	
-	@Override
-	public HashMap<String, Object> reduce(int threadId, HashMap<String, Object> data) {
-		//This uses data that is shared by all threads - aka the fields of this class
-		
-		long start = (long) data.get("start");
-		long finish = (long) data.get("finish");
-		
 		double regionalSum = 0.0;
 		
         for (long i=start; i < finish; ++i) {
@@ -37,12 +24,12 @@ public class IntegralPi extends ThreadProblem{
             regionalSum += 4.0/(1.0+x*x);
         }
         data.put("regionalSum", regionalSum);
-        return data;
-        
+		
+		return data;
 	}
 	
 	@Override
-	public void sharedLocationMethod(int threadId, HashMap<String, Object> data) {
+	public void reduce(int threadId, HashMap<String, Object> data) {
 		//This uses data that is shared by all threads - aka the fields of this class
 		//Here a block mechanism specified by the user. This enables to combine the per_thread data with the public available fields.
 		double pi = ((double) data.get("regionalSum"))*step + (double) this.SHARED_DATA.get("pi");

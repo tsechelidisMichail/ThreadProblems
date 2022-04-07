@@ -7,11 +7,6 @@ public class SharedCounter extends ThreadProblem{
 	
 	@Override
 	public HashMap<String, Object> map(int threadId, HashMap<String, Object> data) {
-		return data;
-	}
-	
-	@Override
-	public HashMap<String, Object> reduce(int threadId, HashMap<String, Object> data) {
 		//This uses data that is shared by all threads - aka the fields of this class
 		
 		//count(threadId);
@@ -20,7 +15,7 @@ public class SharedCounter extends ThreadProblem{
 	}
 
 	@Override
-	public void sharedLocationMethod(int threadId, HashMap<String, Object> data) {
+	public void reduce(int threadId, HashMap<String, Object> data) {
 		//This uses data that is shared by all threads - aka the fields of this class
 		//Here a block mechanism specified by the user. This enables to combine the per_thread data 
 		//with the public available fields.

@@ -22,8 +22,7 @@ public class MyThread extends Thread{
 	@Override
 	public void run() {
 		data = threadProblem.map(threadId,data);
-		data = threadProblem.reduce(threadId,data);
-		sharedLocationMethod.sharedLocationMethod(threadId,data);
+		sharedLocationMethod.reduce(threadId,data);
 	}
 
 }

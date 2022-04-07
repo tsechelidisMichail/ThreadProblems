@@ -14,10 +14,10 @@ public class SemaphoreMethod extends SharedLocationMethod {
 	}
 
 	@Override
-	public void sharedLocationMethod(int threadId, HashMap<String, Object> data) {
+	public void reduce(int threadId, HashMap<String, Object> data) {
 		try {
 		    sem.acquire();
-		    this.threadProblem.sharedLocationMethod(threadId, data);
+		    this.threadProblem.reduce(threadId, data);
 		} catch (InterruptedException e) {
 	    }
 		sem.release();

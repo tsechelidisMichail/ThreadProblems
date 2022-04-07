@@ -54,29 +54,18 @@ public class StringHistogram extends ThreadProblem {
 		int start = threadId*block;
 		int finish = start + block;
 		
-		data.put("start",start);
-		data.put("finish",finish);
-		data.put("block",block);
-		
-		return data;
-	}
-
-	@Override
-	public HashMap<String, Object> reduce(int threadId, HashMap<String, Object> data) {
-		int start = (int) data.get("start");
-		int finish = (int) data.get("finish");
-			
 		int[] histogram = histogramCreation();
 	    
 	    for (int i = start; i < finish; i++) {
 			histogram[((int)myString.charAt(i))] ++;
 	    }
 	    data.put("histogram", histogram);
+		
 		return data;
 	}
 
 	@Override
-	public void sharedLocationMethod(int threadId, HashMap<String, Object> data) {
+	public void reduce(int threadId, HashMap<String, Object> data) {
 		int[] histogramTotal = (int[])this.SHARED_DATA.get("histogram");
 		int[]histogram = (int[])data.get("histogram");
 		int[] temp = this.histogramCreation();

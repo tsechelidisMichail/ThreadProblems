@@ -20,8 +20,7 @@ public abstract class ThreadProblem {
 	protected HashMap<String, Object> SHARED_DATA = new HashMap<String, Object>();
 	
 	public abstract HashMap<String, Object> map(int threadId, HashMap<String, Object> data);
-	public abstract HashMap<String, Object> reduce(int threadId, HashMap<String, Object> data);
-	public abstract void sharedLocationMethod(int threadId, HashMap<String, Object> data);
+	public abstract void reduce(int threadId, HashMap<String, Object> data);
 	public abstract void printResults();
 	
 	public void start(SharedLocationMethod sharedLocationMethod) {
