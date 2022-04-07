@@ -12,10 +12,7 @@ public class IntegralPi extends ThreadProblem{
 	//IT IS NOT GOOD FOR TESTING WITH MAIN TEST FUNCTION, BETTER USE TEST CLASS
 	
 	@Override
-	protected HashMap<String, Object> map(int threadId) {
-		//This instantiates ONCE the private data for a thread
-		HashMap<String, Object> data = new HashMap<String, Object>();
-		
+	public HashMap<String, Object> map(int threadId, HashMap<String, Object> data) {
 		long stepsPerThread = numSteps / this.numThreads;
 		long start = threadId*stepsPerThread;
 		long finish = start + stepsPerThread;

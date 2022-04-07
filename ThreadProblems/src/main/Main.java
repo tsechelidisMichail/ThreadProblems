@@ -110,7 +110,7 @@ public class Main {
 		System.out.println("To run the program use -r : The default problem is " + ThreadProblem.DEFAULT + "with blocking method " + SharedLocationMethod.DEFAULT + ".");
 		System.out.println("Use -h to view options (!!! -h argument expected alone !!!)");
 		System.out.println("First argument should be -r/h/s/S\nOnly -r can have selectors after it");
-		System.out.println("\n\nExamples of usage:\nTPC -r\nTPC -r -p IntegralPi");
+		System.out.println("\n\nExamples of usage:\nthis.program -r\nthis.program -r -p IntegralPi");
 		System.exit(0);
 	}
 

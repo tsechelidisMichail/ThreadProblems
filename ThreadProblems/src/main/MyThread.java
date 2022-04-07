@@ -12,8 +12,8 @@ public class MyThread extends Thread{
 	
 	private int threadId;
 	
-	public MyThread(int threadId, HashMap<String, Object> data, ThreadProblem threadProblem, SharedLocationMethod sharedLocationMethod) {
-		this.data = data;
+	public MyThread(int threadId, ThreadProblem threadProblem, SharedLocationMethod sharedLocationMethod) {
+		this.data = new HashMap<String, Object>();
 		this.threadProblem = threadProblem;
 		this.sharedLocationMethod = sharedLocationMethod;
 		this.threadId = threadId;
@@ -21,6 +21,7 @@ public class MyThread extends Thread{
 
 	@Override
 	public void run() {
+		data = threadProblem.map(threadId,data);
 		data = threadProblem.reduce(threadId,data);
 		sharedLocationMethod.sharedLocationMethod(threadId,data);
 	}

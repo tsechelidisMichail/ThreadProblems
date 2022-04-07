@@ -49,9 +49,7 @@ public class StringHistogram extends ThreadProblem {
 	}
 
 	@Override
-	protected HashMap<String, Object> map(int threadId) {
-		HashMap<String, Object> data = new HashMap<String, Object>();
-
+	public HashMap<String, Object> map(int threadId, HashMap<String, Object> data) {
 		int block = dividable/ this.numThreads;
 		int start = threadId*block;
 		int finish = start + block;

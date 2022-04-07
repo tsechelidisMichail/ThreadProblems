@@ -19,8 +19,7 @@ public abstract class ThreadProblem {
 	
 	protected HashMap<String, Object> SHARED_DATA = new HashMap<String, Object>();
 	
-	//TODO:CONSIDER REMOVING MAP METHOD->MAPPING CAN BE DONE INSIDE REDUCE + CHANGE NAMING
-	protected abstract HashMap<String, Object> map(int threadId);
+	public abstract HashMap<String, Object> map(int threadId, HashMap<String, Object> data);
 	public abstract HashMap<String, Object> reduce(int threadId, HashMap<String, Object> data);
 	public abstract void sharedLocationMethod(int threadId, HashMap<String, Object> data);
 	public abstract void printResults();
@@ -28,7 +27,7 @@ public abstract class ThreadProblem {
 	public void start(SharedLocationMethod sharedLocationMethod) {
 		System.out.println("Available Threads:" + numThreads + "\nStarting...");
 		for (int i = 0; i < numThreads; i++) {
-			threads[i] = new MyThread(i, map(i), this, sharedLocationMethod);
+			threads[i] = new MyThread(i, this, sharedLocationMethod);
 			threads[i].start();
 		}
 	}
