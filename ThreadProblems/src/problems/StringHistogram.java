@@ -37,15 +37,13 @@ public class StringHistogram extends ThreadProblem {
 			+ "<br>Use the already created custom classes as your guide.";
 	private final int myString_length;
 	private int dividable;
+	private int difference;
 	private final int alphabetSize = 256;
 	{	
 		this.SHARED_DATA.put("histogram", this.histogramCreation());
 		myString_length = myString.length();
-		
-		dividable = myString_length;
-		while(dividable%this.numThreads!=0) {
-			dividable--;
-		}
+		difference = myString_length%this.numThreads;
+		dividable = myString_length - difference;
 	}
 
 	@Override
@@ -53,7 +51,7 @@ public class StringHistogram extends ThreadProblem {
 		int block = dividable/ this.numThreads;
 		int start = threadId*block;
 		int finish = start + block;
-		
+		if(finish==dividable)finish+=difference;
 		int[] histogram = histogramCreation();
 	    
 	    for (int i = start; i < finish; i++) {
